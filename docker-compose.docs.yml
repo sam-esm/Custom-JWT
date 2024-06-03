@@ -1,0 +1,16 @@
+services:
+  docs:
+    image: custom_jwt_auth_local_docs
+    container_name: custom_jwt_auth_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./custom_jwt_auth:/app/custom_jwt_auth:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
