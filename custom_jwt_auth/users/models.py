@@ -100,7 +100,8 @@ class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
             )
         ],
         max_length=11,
-        blank=True,
+        unique=True,
+        db_index=True
     )  # Field name made lowercase.db_index=True, max_length=11, unique=True)
     first_name = models.CharField(
         _("Name of User"), max_length=255, null=True, blank=True
